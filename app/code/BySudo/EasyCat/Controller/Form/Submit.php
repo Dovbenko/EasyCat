@@ -32,11 +32,8 @@ class Submit implements HttpPostActionInterface
         $response = ['success' => false];
 
         try {
+            $this->validateFormKey();
             $request = $this->context->getRequest();
-            
-            if (!$this->formKeyValidator->validate($request)) {
-                throw new \Exception(__('Invalid form key'));
-            }
 
             $name = $request->getParam('name');
             $email = $request->getParam('email');
@@ -56,5 +53,19 @@ class Submit implements HttpPostActionInterface
         }
 
         return $resultJson->setData($response);
+    }
+
+    /**
+     * Validate the form key or throw an exception if invalid.
+     *
+     * @throws \Exception
+     */
+    private function validateFormKey(): void
+    {
+        $request = $this->context->getRequest();
+
+        if (!$this->formKeyValidator->validate($request)) {
+            throw new \Exception(__('Invalid form key'));
+        }
     }
 }
