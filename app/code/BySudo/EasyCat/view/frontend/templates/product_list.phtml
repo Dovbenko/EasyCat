@@ -1,0 +1,27 @@
+<?php
+/** @var \BySudo\EasyCat\Block\ProductList $block */
+$productCollection = $block->getProductCollection();
+?>
+
+<?php if ($productCollection && $productCollection->getSize()): ?>
+    <div class="test-product-list">
+        <h2><?= __('Product List') ?></h2>
+        <div class="products-grid">
+            <?php foreach ($productCollection as $product): ?>
+                <div class="product-item">
+                    <h3 class="product-name">
+                        <a href="<?= $block->escapeUrl($product->getProductUrl()) ?>">
+                            <?= $block->escapeHtml($product->getName()) ?>
+                        </a>
+                    </h3>
+                    <div class="product-price">
+                        <?= /* @noEscape */ $block->getLayout()
+                            ->createBlock(\Magento\Framework\Pricing\Render::class)
+                            ->render('final_price', $product, []);
+                        ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>

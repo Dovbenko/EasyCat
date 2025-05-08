@@ -1,0 +1,54 @@
+<?php
+/** @var \BySudo\EasyCat\Block\CheckoutForm $block */
+?>
+<div class="test-module-checkout-form">
+    <form action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+          method="post"
+          id="test-module-form"
+          data-mage-init='{"validation":{}}'>
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?= $block->escapeHtml(__('Additional Information')) ?></span></legend>
+            <div class="field required">
+                <label class="label" for="name">
+                    <span><?= $block->escapeHtml(__('Name')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           name="name"
+                           id="name"
+                           class="input-text required-entry"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field required">
+                <label class="label" for="email">
+                    <span><?= $block->escapeHtml(__('Email')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="email"
+                           name="email"
+                           id="email"
+                           class="input-text required-entry validate-email"
+                           data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="comment">
+                    <span><?= $block->escapeHtml(__('Comment')) ?></span>
+                </label>
+                <div class="control">
+                    <textarea name="comment"
+                              id="comment"
+                              class="input-text"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action submit primary">
+                    <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
