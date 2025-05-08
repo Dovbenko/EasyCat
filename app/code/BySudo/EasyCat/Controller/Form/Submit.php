@@ -29,7 +29,6 @@ class Submit implements HttpPostActionInterface
     public function execute()
     {
         $resultJson = $this->resultJsonFactory->create();
-        $response = ['success' => false];
 
         try {
             $this->validateFormKey();
