@@ -14,7 +14,7 @@ class CheckoutForm extends Template
      *
      * @return string
      */
-    public function getFormAction()
+    public function getFormAction(): string
     {
         return $this->getUrl('easycat/form/submit');
     }

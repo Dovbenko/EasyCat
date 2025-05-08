@@ -26,7 +26,7 @@ class Submit implements HttpPostActionInterface
      *
      * @return \Magento\Framework\Controller\Result\Json
      */
-    public function execute()
+    public function execute(): object
     {
         $resultJson = $this->resultJsonFactory->create();
 

@@ -34,7 +34,7 @@ class ProductList extends Template
      *
      * @return \Magento\Catalog\Model\ResourceModel\Product\Collection
      */
-    public function getProductCollection()
+    public function getProductCollection(): object
     {
         $collection = $this->productCollectionFactory->create();
         $collection->addAttributeToSelect('*')
