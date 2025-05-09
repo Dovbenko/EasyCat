@@ -6,6 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Model\Product\Visibility;
+use Magento\Catalog\Model\Product;
 
 /**
  * Block class for displaying a list of products.
@@ -43,5 +44,18 @@ class ProductList extends Template
             ->setPageSize(20);
 
         return $collection;
+    }
+
+    /**
+     * Get the rendered price HTML for a product.
+     *
+     * @param Product $product
+     * @return string
+     */
+    public function getProductPrice(Product $product): string
+    {
+        return $this->getLayout()
+            ->createBlock(\Magento\Framework\Pricing\Render::class)
+            ->render('final_price', $product, []);
     }
 }

@@ -15,10 +15,7 @@ $productCollection = $block->getProductCollection();
                         </a>
                     </h3>
                     <div class="product-price">
-                        <?= /* @noEscape */ $block->getLayout()
-                            ->createBlock(\Magento\Framework\Pricing\Render::class)
-                            ->render('final_price', $product, []);
-                        ?>
+                        <?= /* @noEscape */ $block->getProductPrice($product) ?>
                     </div>
                 </div>
             <?php endforeach; ?>
